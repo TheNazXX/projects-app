@@ -24,21 +24,21 @@
 
 .ghost{
   color: var(--black);
-  border: 2px solid var(--gray-light);
+  border: 2px solid var(--grey-light);
 }
 
 .ghost:hover{
   border: 2px solid transparent;
 }
 
-.arrow{
+.svg{
   display: inline-block;
   margin-left: 10px;
+  transition: all .3s;
 }
 
 .down{
   transform: rotate(90deg);
-  transition: all .3s;
 }
 
 .primary svg{

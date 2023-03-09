@@ -1,0 +1,13 @@
+import P_Props from './P.props';
+import styles from './p.module.css';
+import classNames from 'classnames';
+
+export const P = ({ children, size, className, ...props }: P_Props): JSX.Element => {
+  return( 
+  <p 
+    className={classNames(styles[size])}
+    {...props}
+  >
+    {children}
+   </p>);
+};
