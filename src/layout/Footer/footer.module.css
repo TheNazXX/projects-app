@@ -1,0 +1,16 @@
+.footer{
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 40px;
+  color: white;
+  padding: 27px 32px 23px;
+  background-color: var(--primary);
+}
+
+.footer a{
+  transition: color .1s;
+}
+
+.footer a:hover{
+  color: var(--gray-light);
+}
