@@ -1,6 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import { MenuItem } from '@/interfaces/menu.interface';
 
-export default function Document(): JSX.Element {
+export default function Document({menu}: HomeProps): JSX.Element {
   return (
     <Html lang="en">
       <Head />
@@ -11,3 +12,8 @@ export default function Document(): JSX.Element {
     </Html>
   )
 }
+
+interface HomeProps{
+  menu: MenuItem[];
+  firstCategory: Number;
+};
