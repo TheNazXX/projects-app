@@ -11,17 +11,21 @@
 }
 
 .header{
-  display: none;
+  margin-bottom: 50px;
+  display: block;
   grid-area: header;
 }
 
 .sidebar{
   grid-area: sidebar;
-  border-right: 2px dashed var(--black);
 }
 
 .body{
+  padding: 30px;
   grid-area: body;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
 }
 
 .footer{

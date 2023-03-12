@@ -1,9 +1,13 @@
 import { Menu } from "@/components/Menu/Menu";
+import classNames from "classnames";
 import SidebarProps from "./Sidebar.props";
+import styles from './sidebar.module.css';
 
-export const Sidebar = (props: SidebarProps): JSX.Element => {
+export const Sidebar = ({className, ...props}: SidebarProps): JSX.Element => {
+  console.log(styles)
   return (
     <div
+      className={classNames(className, styles.sidebar)}
       {...props}
     >
       <Menu />
