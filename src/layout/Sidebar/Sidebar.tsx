@@ -1,3 +1,4 @@
+import { Menu } from "@/components/Menu/Menu";
 import SidebarProps from "./Sidebar.props";
 
 export const Sidebar = (props: SidebarProps): JSX.Element => {
@@ -5,7 +6,7 @@ export const Sidebar = (props: SidebarProps): JSX.Element => {
     <div
       {...props}
     >
-      Sidebar
+      <Menu />
     </div>
   )
 }

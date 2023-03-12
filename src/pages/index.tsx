@@ -35,11 +35,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      menu
+      menu,
+      firstCategory
     }
   };
 };
 
 interface HomeProps extends Record<string, unknown>{
   menu: MenuItem[];
+  firstCategory: number
 };

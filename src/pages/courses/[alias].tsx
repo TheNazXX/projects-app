@@ -64,6 +64,7 @@ export const getStaticProps: GetStaticProps = async ({params}: GetStaticPropsCon
 
 interface CourseProps extends Record<string, unknown>{
   menu: MenuItem[];
+  firstCategory: number;
   page: TopPageModel;
   products: ProductModel[];
 };
