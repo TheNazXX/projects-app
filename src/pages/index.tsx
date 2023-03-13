@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { MenuItem } from '@/interfaces/menu.interface';
 
-const Home = ({menu}: HomeProps): JSX.Element => {
+const Home = (props: HomeProps): JSX.Element => {
   const [rating, setRating] = useState<number>(4)
   return (
     <>
@@ -20,7 +20,7 @@ const Home = ({menu}: HomeProps): JSX.Element => {
       <Tag size='s' color='green'>Green tag</Tag>
       <Tag size='s' color='primary'>Primary tag</Tag>
       <Rating rating={rating} isEditable={true} setRating={setRating}></Rating>
-      {menu.map(({_id: {secondCategory}}) => <div key={secondCategory}>{secondCategory}</div>)}
+      {props.menu.map(({_id: {secondCategory}}) => <div key={secondCategory}>{secondCategory}</div>)}
     </>
   );
 };

@@ -4,7 +4,6 @@ import SidebarProps from "./Sidebar.props";
 import styles from './sidebar.module.css';
 
 export const Sidebar = ({className, ...props}: SidebarProps): JSX.Element => {
-  console.log(styles)
   return (
     <div
       className={classNames(className, styles.sidebar)}

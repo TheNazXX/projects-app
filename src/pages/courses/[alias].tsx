@@ -9,9 +9,7 @@ import { ParsedUrlQuery } from 'querystring';
 
 const firstCategory = 0;
 
-
-const Course = ({menu, page, products}: CourseProps): JSX.Element => {
-  console.log(products)
+const Course = ({products}: CourseProps): JSX.Element => {
   const [rating, setRating] = useState<number>(4)
   return (
     <>
@@ -57,7 +55,8 @@ export const getStaticProps: GetStaticProps = async ({params}: GetStaticPropsCon
     props: {
       menu,
       page,
-      products
+      products,
+      firstCategory
     }
   };
 };
