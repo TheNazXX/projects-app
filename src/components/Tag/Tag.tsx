@@ -1,18 +1,27 @@
-import classNames from 'classnames';
-import TagProps from './Tag.props';
-import styles from './tag.module.css';
+import { TagProps } from "./Tag.props";
+import cn from "classnames";
+import styles from "./Tag.module.css";
 
-export const Tag = ({children, size = 's', color = 'ghost', href, className, ...props}: TagProps): JSX.Element => {
+export const Tag = ({children, href, size='sm', color='ghost', className, ...props}: TagProps): JSX.Element => {
   return (
     <div
-     className={classNames(styles.tag, styles[size], styles[color])}
-     {...props}
+    {...props}
+    className={cn(styles.tag, className, {
+      [styles.sm]: size === 'sm',
+      [styles.md]: size === 'md',
+
+      [styles.ghost]: color === 'ghost',
+      [styles.red]: color === 'red',
+      [styles.grey]: color === 'grey',
+      [styles.green]: color === 'green',
+      [styles.primary]: color === 'primary'
+    })}
     >
       {
-        href
-          ? <a href={href}>{children}</a>
-          : <>{children}</>
+        href 
+        ? <a href={href}>{children}</a>
+        : <>{children}</>
       }
     </div>
   )
-};
+}

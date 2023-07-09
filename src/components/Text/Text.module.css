@@ -1,0 +1,21 @@
+.p{
+  margin: 0;
+}
+
+.lg{
+  font-size: 18px;
+  line-height: 29px;
+  font-weight: 400;
+}
+
+.md{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.sm{
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}

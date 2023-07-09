@@ -1,28 +1,21 @@
+import { Button, Text, Title, Tag } from '../components';
+
 export default function Home(): JSX.Element {
   return (
     <>
-      App
+      <Title tag='h1'>App</Title>
+      <Button apperance='primary' arrow='down'>Узнать больше</Button>
+      <Button apperance='ghost' arrow='down'>Читать отзывы</Button>
+      <Text size='lg'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus at eaque facere vero quidem dolor amet laudantium, quam veritatis tenetur corrupti architecto perferendis commodi nam, ex modi hic accusantium omnis.</Text>
+      <Text size='md'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus at eaque facere vero quidem dolor amet laudantium, quam veritatis tenetur corrupti architecto perferendis commodi nam, ex modi hic accusantium omnis.</Text>
+      <Text size='sm'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus at eaque facere vero quidem dolor amet laudantium, quam veritatis tenetur corrupti architecto perferendis commodi nam, ex modi hic accusantium omnis.</Text>
+
+      <Tag size='md' color="ghost">Скидка</Tag>
+      <Tag size='md' color="red">Скидка</Tag>
+      <Tag size='md' color="grey">Скидка</Tag>
+      <Tag size='md' color="primary">Скидка</Tag>
+      <Tag size='md' color="green">Скидка</Tag>
     </>
   );
 };
 
-export default withLayout(Home);
-
-export const getStaticProps: GetStaticProps = async () => {
-  const firstCategory = 0;
-  const {data: menu} = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {
-    firstCategory
-  });
-
-  return {
-    props: {
-      menu,
-      firstCategory
-    }
-  };
-};
-
-interface HomeProps extends Record<string, unknown>{
-  menu: MenuItem[];
-  firstCategory: number
-};

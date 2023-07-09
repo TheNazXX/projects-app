@@ -1,20 +1,20 @@
 .button{
-  padding: 10px;
+  display: inline-block;
 
+  box-sizing: border-box;
+  padding: 10px;
+  
+  cursor: pointer;
   text-align: center;
+  border: none;
   border-radius: 5px;
 
-  cursor: pointer;
-
-  font-weight: 400;
   font-size: 14px;
-  line-height: 14px;
-
-  transition: all .2s;
+  transition: background-color .5s;
 }
 
 .primary{
-  color: white;
+  color: var(--white);
   background-color: var(--primary);
 }
 
@@ -22,25 +22,30 @@
   background-color: var(--primary-hover);
 }
 
+.primary svg,
+.ghost:hover svg{
+  fill: var(--white)
+}
+
 .ghost{
   color: var(--black);
-  border: 2px solid var(--gray-light);
+  background-color: none;
+  border: 1px solid var(--gray-light);
 }
 
 .ghost:hover{
-  border: 2px solid transparent;
+  color: white;
+  background-color: var(--gray-dark);
 }
 
-.svg{
+
+.arrow{
   display: inline-block;
   margin-left: 10px;
-  transition: all .3s;
 }
 
 .down{
   transform: rotate(90deg);
+  transform: all .2s;
 }
 
-.primary svg{
-  fill: var(--white);
-}

@@ -1,7 +1,4 @@
-export * from '../layout';
-
-export * from './Htag/Htag';
+export * from './Title/Title';
 export * from './Button/Button';
-export * from './P/P';
+export * from './Text/Text';
 export * from './Tag/Tag';
-export * from './Rating/Rating';
