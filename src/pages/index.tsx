@@ -1,6 +1,9 @@
-import { Button, Text, Title, Tag } from '../components';
+import { useState } from 'react';
+import { Button, Text, Title, Tag, Rating } from '../components';
 
 export default function Home(): JSX.Element {
+  const [rating, setRating] = useState<number>(4);
+
   return (
     <>
       <Title tag='h1'>App</Title>
@@ -15,6 +18,8 @@ export default function Home(): JSX.Element {
       <Tag size='md' color="grey">Скидка</Tag>
       <Tag size='md' color="primary">Скидка</Tag>
       <Tag size='md' color="green">Скидка</Tag>
+
+      <Rating rating={rating} setRating={setRating}/>
     </>
   );
 };
