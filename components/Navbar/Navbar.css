@@ -1,0 +1,3 @@
+.navbar {
+  @apply py-5 px-8 border-b border-nav-border gap-4;
+}
