@@ -9,3 +9,5 @@ export default function Home(){
     </section>
   );
 };
+
+// npx grafbase@0.24 dev
