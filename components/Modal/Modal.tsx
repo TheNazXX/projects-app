@@ -3,7 +3,7 @@
 import { useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { ModalProps } from "./ModalProps";
+import { ModalProps } from "./Modal.props";
 
 import './Modal.css';
 

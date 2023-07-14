@@ -1,4 +1,4 @@
-import { FormFieldProps } from "./FormFieldProps";
+import { FormFieldProps } from "./FormField.props";
 import './FormField.css';
 
 export const FormField = ({ type, title, state, placeholder, isTextArea, setState }: FormFieldProps) => {

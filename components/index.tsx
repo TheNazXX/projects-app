@@ -7,4 +7,4 @@ export * from './CustomMenu/CustomMenu';
 export * from './ProjectForm/ProjectForm';
 export * from './Button/Button';
 export * from './FormField/FormField';
-
+export * from './ProjectCard/ProjectCard';

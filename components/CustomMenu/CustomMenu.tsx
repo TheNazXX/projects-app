@@ -1,6 +1,6 @@
 "use client"
 
-import { CustomMenuProps } from "./CustomMenuProps";
+import { CustomMenuProps } from "./CustomMenu.props";
 import { Fragment } from "react";
 import {Menu} from '@headlessui/react';
 import Image from "next/image";
