@@ -3,18 +3,23 @@ import { ChangeEvent, useState } from 'react';
 
 import { FormField } from '../FormField/FormField';
 import { CustomMenu } from '../CustomMenu/CustomMenu';
+import { Button } from '../Button/Button';
 
 import { ProjectFormProps } from './ProjectFromProps';
 import { categoryFilters } from '@/constants/CategoryFilters';
+import { FormState } from '@/common.types';
 import Image from 'next/image';
 
 import './ProjectForm.css';
+import { createNewProject, fetchToken } from '@/lib/actions';
+import { useRouter } from 'next/navigation';
+
 
 
 export const ProjectForm = ({ type, session }: ProjectFormProps) => {
-
+  const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<FormState>({
     title: '',
     description: '',
     image: '',
@@ -23,7 +28,23 @@ export const ProjectForm = ({ type, session }: ProjectFormProps) => {
     category: ''
   });
 
-  const handleFormSubmit = (e: React.FormEvent) => {};
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const {token} = await fetchToken(); 
+
+    try{
+      if(type === 'create'){
+        await createNewProject(form, session?.user?.id, token);
+        router.push('/');
+      }
+    }catch(error){
+      throw error;
+    }finally{
+      setIsSubmitting(false);
+    };
+  };
 
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -85,7 +106,12 @@ export const ProjectForm = ({ type, session }: ProjectFormProps) => {
       />
 
       <div className="flexStart w-full">
-        <button type="submit">Create</button>
+        <Button 
+          title={isSubmitting ? `${type === 'create' ? 'Creating' : 'Editing'}`: `${type === 'create' ? 'Create' : 'Edit'}`}
+          type="submit"
+          leftIcon={isSubmitting ? "" : "/plus.svg"}
+          isSubmitting={isSubmitting}
+        />
       </div>
     </form>
   );
