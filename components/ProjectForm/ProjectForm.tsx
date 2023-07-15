@@ -9,21 +9,21 @@ import { ProjectFormProps } from './ProjectFrom.props';
 import { categoryFilters } from '@/constants/CategoryFilters';
 import { FormState } from '@/common.types';
 import Image from 'next/image';
-import { createNewProject, fetchToken } from '@/lib/actions';
+import { createNewProject, fetchToken, updateProject } from '@/lib/actions';
 import { useRouter } from 'next/navigation';
 
 import './ProjectForm.css';
 
-export const ProjectForm = ({ type, session }: ProjectFormProps) => {
+export const ProjectForm = ({ type, session, project }: ProjectFormProps) => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState<FormState>({
-    title: '',
-    description: '',
-    image: '',
-    liveSiteUrl: '',
-    githubUrl: '',
-    category: '',
+    title: project?.title || '',
+    description: project?.description || '',
+    image: project?.image ||'',
+    liveSiteUrl: project?.liveSiteUrl || '',
+    githubUrl: project?.githubUrl || '',
+    category: project?.category || '',
   });
 
   const handleFormSubmit = async (e: FormEvent) => {
@@ -36,11 +36,18 @@ export const ProjectForm = ({ type, session }: ProjectFormProps) => {
     try {
       if (type === 'create') {
         await createNewProject(form, session?.user?.id, token);
-
         router.push('/');
       }
+
+
+      if (type === 'edit') {
+        await updateProject(form, project?.id as string, token)
+        router.push('/');
+      }
+
     } catch (error) {
       alert(`Failed to ${type === 'create' ? 'create' : 'edit'} a project. Try again!`);
+      console.log(error)
     } finally {
       setIsSubmitting(false);
     }

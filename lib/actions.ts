@@ -6,7 +6,8 @@ import {
   getUserQuery, 
   projectsQuery, 
   getProjectsOfUserQuery,
-  deleteProjectMutation
+  deleteProjectMutation,
+  updateProjectMutation
 } from "@/graphql";
 
 import { GraphQLClient } from "graphql-request";
@@ -107,4 +108,34 @@ export const getUserProjects = (id: string, last?: number) => {
 export const deleteProject = (id: string, token: string) => {
   client.setHeader("Authorization", `Bearer ${token}`);
   return makeGraphQLRequest(deleteProjectMutation, { id });
+};
+
+export const updateProject = async (form: ProjectForm, projectId: string, token: string) => {
+
+  function isBase64DataURL(value: string) {
+    const base64Regex = /^data:image\/[a-z]+;base64,/;
+    return base64Regex.test(value);
+  }
+
+  let updateForm = {...form};
+  const isUploadingNewImage = isBase64DataURL(form.image);
+
+  if(isUploadingNewImage){
+    const imageUrl = await uploadImage(form.image);
+    if(imageUrl.url){
+      updateForm = {
+        ...form,
+        image: imageUrl.url
+      };
+    };
+  };
+
+  const variables = {
+    id: projectId,
+    input: updateForm
+  };
+
+
+  client.setHeader("Authorization", `Bearer ${token}`);
+  return makeGraphQLRequest(updateProjectMutation, variables);
 };
