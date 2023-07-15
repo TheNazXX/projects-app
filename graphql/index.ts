@@ -117,3 +117,11 @@ export const getProjectsOfUserQuery = `
   }
 `;
 
+export const deleteProjectMutation = `
+  mutation DeleteProject($id: ID!) {
+    projectDelete(by: { id: $id }) {
+      deletedId
+    }
+  }
+`;
+
