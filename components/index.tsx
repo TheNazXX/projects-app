@@ -8,3 +8,4 @@ export * from './ProjectForm/ProjectForm';
 export * from './Button/Button';
 export * from './FormField/FormField';
 export * from './ProjectCard/ProjectCard';
+export * from './RelatedProjects/RelatedProjects';

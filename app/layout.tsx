@@ -1,8 +1,8 @@
 import {Navbar, Footer} from "@/components";
 
 export const metadata = {
-  title: "Course app",
-  description: "Course app",
+  title: "Projects app",
+  description: "Projects app",
 };
 
 export default function RootLayout({
