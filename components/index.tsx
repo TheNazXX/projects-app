@@ -10,3 +10,4 @@ export * from './FormField/FormField';
 export * from './ProjectCard/ProjectCard';
 export * from './RelatedProjects/RelatedProjects';
 export * from './ProjectAction/ProjectAction';
+export * from './Categories/Categories';
