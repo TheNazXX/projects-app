@@ -8,7 +8,7 @@ export const Button = ({title, type, leftIcon, rightIcon, isSubmitting, handleCl
       disabled={isSubmitting || disabled}
       className={`
         flexCenter gap-3 px-4 py-3 rounded-xl text-sm font-medium max-md:w-full
-        ${isSubmitting || disabled ? 'bg-black/50' : bgColor || 'bg-primary-purple'}
+        ${isSubmitting || disabled ? 'bg-black/50' : bgColor || 'bg-primary-purple hover:opacity-80'}
         ${textColor || 'text-white'}
       `}
       onClick={handleClick}

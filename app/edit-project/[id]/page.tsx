@@ -1,10 +1,10 @@
 import { getCurrentUser } from "@/lib/session";
 import { Modal, ProjectForm } from "@/components";
 import { redirect } from "next/navigation";
-
-import "@/app/globals.css";
 import { getProjectDetails } from "@/lib/actions";
 import { ProjectInterface } from "@/common.types";
+
+import "@/app/globals.css";
 
 const EditProject = async ({params: {id}}: {params: {id: string}}) => {
   const session = await getCurrentUser();

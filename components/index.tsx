@@ -12,3 +12,4 @@ export * from './RelatedProjects/RelatedProjects';
 export * from './ProjectAction/ProjectAction';
 export * from './Categories/Categories';
 export * from './LoadMore/LoadMore';
+export * from './ProfilePage/ProfilePage';

@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 import './ProjectCard.css';
 
-export const ProjctCard = ({ id, image, title, description, name, avatarUrl, userId }: ProjectCardProps) => {
+export const ProjectCard = ({ id, image, title, description, name, avatarUrl, userId }: ProjectCardProps) => {
   const [randomLikes, setRandomLikes] = useState(0);
   const [randomViews, setRandomViews] = useState('');
 
