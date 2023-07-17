@@ -1,14 +1,14 @@
 import Image from "next/image"
 import { ButtonProps } from "./Button.props"
 
-export const Button = ({title, type, leftIcon, rightIcon, isSubmitting, handleClick, bgColor, textColor}: ButtonProps) => {
+export const Button = ({title, type, leftIcon, rightIcon, isSubmitting, handleClick, bgColor, textColor, disabled = false}: ButtonProps) => {
   return (
     <button
       type={type || 'button'}
-      disabled={isSubmitting}
+      disabled={isSubmitting || disabled}
       className={`
         flexCenter gap-3 px-4 py-3 rounded-xl text-sm font-medium max-md:w-full
-        ${isSubmitting ? 'bg-black/50' : bgColor || 'bg-primary-purple'}
+        ${isSubmitting || disabled ? 'bg-black/50' : bgColor || 'bg-primary-purple'}
         ${textColor || 'text-white'}
       `}
       onClick={handleClick}

@@ -9,4 +9,5 @@ export interface ButtonProps {
   handleClick?: MouseEventHandler;
   bgColor?: string;
   textColor?: string;
+  disabled?: boolean;
 };

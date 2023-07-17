@@ -1,8 +1,10 @@
 import { ProjectInterface } from "@/common.types";
 import { fetchAllProjects } from "@/lib/actions";
 
+
+import { Categories, LoadMore, ProjctCard } from "@/components";
+
 import "./globals.css";
-import { Categories, ProjctCard } from "@/components";
 
 type ProjectsSearch = {
   projectSearch: {
@@ -20,14 +22,19 @@ type ProjectsSearch = {
 
 type SearchParams = {
   category?: string;
-}
+  endcursor?: string;
+};
 
 type Props = {
   searchParams: SearchParams
-}
+};
 
-export default async function Home({searchParams: {category}}: Props){
-  const  data = await fetchAllProjects(category) as ProjectsSearch
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+export const revalidate = 0;
+
+export default async function Home({searchParams: {category, endcursor}}: Props){
+  const  data = await fetchAllProjects(category, endcursor) as ProjectsSearch
 
   const projectsToDisplay = data?.projectSearch?.edges || [];
 
@@ -40,6 +47,8 @@ export default async function Home({searchParams: {category}}: Props){
       </section>  
     )
   }
+
+  const pagination = data?.projectSearch?.pageInfo;
 
   return (
     <section className="flex-start flex-col paddings mb-16">
@@ -60,7 +69,12 @@ export default async function Home({searchParams: {category}}: Props){
         ))}
       </section>
 
-      <h1>Categories</h1>
+      <LoadMore 
+        startCursor={pagination.startCursor}
+        endCursor={pagination.endCursor}
+        hasPreviousPage={pagination.hasPreviousPage}
+        hasNextPage={pagination.hasNextPage}
+      />
     </section>
   );
 };
