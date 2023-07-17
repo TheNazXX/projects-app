@@ -45,8 +45,8 @@ export const createProjectMutation = `
 `;
 
 export const projectsQuery = `
-  query getProjects($offset: Int, $category: String, $endCursor: String) {
-    projectsSearch(first: $offset, after: $endCursor, filter: {category: {eq: $category}}) {
+  query getProjects($category: String, $endCursor: String) {
+    projectsSearch(first: 4, after: $endCursor, filter: {category: {eq: $category}}) {
       pageInfo {
         hasNextPage
         hasPreviousPage

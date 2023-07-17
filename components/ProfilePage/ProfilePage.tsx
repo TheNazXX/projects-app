@@ -6,8 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const ProfilePage = async({ user }: { user: UserProfile }) => {
-  const offset = 12
-  const  data = await fetchAllProjects(offset) as any; // Fix this
+
+  const  data = await fetchAllProjects() as any; // Fix this
   const projectsToDisplay = data?.projectSearch?.edges || [];
 
   return (

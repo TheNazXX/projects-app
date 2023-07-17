@@ -9,8 +9,7 @@ import './RelatedProjects.css';
 export const RelatedProjects = async ({ userId }: RelatedProjectsProps) => {
   const result = (await getUserProjects(userId)) as { user?: UserProfile };
 
-  const offset = 12
-  const  data = await fetchAllProjects(offset) as any // Fix this;
+  const  data = await fetchAllProjects() as any // Fix this;
   const projectsToDisplay = data?.projectSearch?.edges || [];
 
 
