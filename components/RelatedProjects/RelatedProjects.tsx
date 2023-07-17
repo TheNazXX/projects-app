@@ -1,4 +1,4 @@
-import { getUserProjects } from '@/lib/actions';
+import { fetchAllProjects, getUserProjects } from '@/lib/actions';
 import { RelatedProjectsProps } from './RelatedProjects.props';
 import { ProjectInterface, UserProfile } from '@/common.types';
 import Link from 'next/link';
@@ -6,12 +6,13 @@ import Image from 'next/image';
 
 import './RelatedProjects.css';
 
-export const RelatedProjects = async ({ userId, projectId }: RelatedProjectsProps) => {
+export const RelatedProjects = async ({ userId }: RelatedProjectsProps) => {
   const result = (await getUserProjects(userId)) as { user?: UserProfile };
 
-  const filteredProjects = result?.user?.projects?.edges?.filter(({ node }: { node: ProjectInterface }) => node?.id !== projectId);
+  const offset = 12
+  const  data = await fetchAllProjects(offset) as any // Fix this;
+  const projectsToDisplay = data?.projectSearch?.edges || [];
 
-  if (filteredProjects?.length === 0) return null;
 
   return (
     <section className="flex flex-col w-full">
@@ -23,7 +24,7 @@ export const RelatedProjects = async ({ userId, projectId }: RelatedProjectsProp
       </div>
 
       <div className="related_projects-grid">
-        {filteredProjects?.map(({ node }: { node: ProjectInterface }) => (
+        {projectsToDisplay?.map(({ node }: { node: ProjectInterface }) => (
           <div className="flexCenter related_project-card drop-shadow-card">
             <Link href={`/project/${node?.id}`} className="flexCenter group relative w-full h-full">
               <Image src={node?.image} width={414} height={314} className="w-full h-full object-cover rounded-2xl" alt="project image" />

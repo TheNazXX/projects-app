@@ -17,7 +17,7 @@ const UserProfile = async ({params}: Props) => {
   }
 
   return (
-    <>12312312</>
+    <ProfilePage user={result?.user} />
   );
 };
 

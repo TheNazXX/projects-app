@@ -1,9 +1,7 @@
 import { ProjectInterface } from "@/common.types";
 import { fetchAllProjects } from "@/lib/actions";
 
-
-import { Categories, LoadMore, ProjctCard } from "@/components";
-
+import { Categories, LoadMore, ProjectCard } from "@/components";
 import "./globals.css";
 
 type ProjectsSearch = {
@@ -30,13 +28,13 @@ type Props = {
 };
 
 export const dynamic = "force-dynamic";
-export const dynamicParams = true;
 export const revalidate = 0;
 
 export default async function Home({searchParams: {category, endcursor}}: Props){
-  const  data = await fetchAllProjects(category, endcursor) as ProjectsSearch
-
+  const offset = 4;
+  const  data = await fetchAllProjects(offset, category, endcursor) as ProjectsSearch
   const projectsToDisplay = data?.projectSearch?.edges || [];
+
 
   if(projectsToDisplay.length === 0){
     return(
@@ -56,7 +54,7 @@ export default async function Home({searchParams: {category, endcursor}}: Props)
       
       <section className="projects-grid">
         {projectsToDisplay.map(({node}: {node: ProjectInterface}) => (
-          <ProjctCard
+          <ProjectCard
             key={node?.id}
             title={node?.title}
             id={node?.id}

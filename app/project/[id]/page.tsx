@@ -72,7 +72,7 @@ const Project = async ({ params: { id } }: { params: { id: string } }) => {
         <span className="w-full bg-light-white-200 h-0.5" />
       </section>
 
-      <RelatedProjects userId={projectDetails?.createdBy.id} projectId={projectDetails?.id} />
+      <RelatedProjects userId={projectDetails?.createdBy.id}/>
     </Modal>
   );
 };
