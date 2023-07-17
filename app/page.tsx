@@ -32,21 +32,21 @@ export const revalidate = 0;
 
 export default async function Home({searchParams: {category, endcursor}}: Props){
 
-  // const  data = await fetchAllProjects(category, endcursor) as ProjectsSearch
-  // const projectsToDisplay = data?.projectSearch?.edges || [];
+  const  data = await fetchAllProjects(category, endcursor) as ProjectsSearch
+  const projectsToDisplay = data?.projectSearch?.edges || [];
 
 
-  // if(projectsToDisplay.length === 0){
-  //   return(
-  //     <section className="flexStart flex-col paddings">
-  //       <Categories />
+  if(projectsToDisplay.length === 0){
+    return(
+      <section className="flexStart flex-col paddings">
+        <Categories />
 
-  //       <p className="no-result-text text-center">No projects found, fo create some first.</p>
-  //     </section>  
-  //   )
-  // }
+        <p className="no-result-text text-center">No projects found, fo create some first.</p>
+      </section>  
+    )
+  }
 
-  // const pagination = data?.projectSearch?.pageInfo;
+  const pagination = data?.projectSearch?.pageInfo;
 
   return (
     <section className="flex-start flex-col paddings mb-16">

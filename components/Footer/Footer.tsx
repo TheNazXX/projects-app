@@ -20,7 +20,7 @@ const FooterColumn = ({ title, links }: FooterColumnProps) => (
 
 export const Footer = () => {
   return (
-    <footer className="flexStart footer paddings">
+    <footer className="flexStart footer paddings mt-auto">
       <div className="flex flex-col gap-12 w-full">
         <div className="flex items-start flex-col">
           <Image src="/logo-purple.svg" width={115} height={38} alt="Flexible" />
