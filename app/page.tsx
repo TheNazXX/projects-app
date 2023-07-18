@@ -19,8 +19,8 @@ type ProjectsSearch = {
 }
 
 type SearchParams = {
-  category?: string | null;
-  endcursor?: string | null;
+  category?: string;
+  endcursor?: string;
 };
 
 type Props = {
@@ -28,10 +28,9 @@ type Props = {
 };
 
 export const dynamic = "force-dynamic";
-export const dynamicParams = true;
 export const revalidate = 0;
 
-const Home = async ({searchParams: {category, endcursor}}: Props) => {
+export default async function Home({searchParams: {category, endcursor}}: Props){
   const  data = await fetchAllProjects(category, endcursor) as ProjectsSearch
   const projectsToDisplay = data?.projectSearch?.edges || [];
 
@@ -76,7 +75,5 @@ const Home = async ({searchParams: {category, endcursor}}: Props) => {
     </section>
   );
 };
-
-export default Home;
 
 // npx grafbase@0.24 dev
