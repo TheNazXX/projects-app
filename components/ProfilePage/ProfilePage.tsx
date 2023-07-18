@@ -7,8 +7,8 @@ import Link from 'next/link';
 
 export const ProfilePage = async({ user }: { user: UserProfile }) => {
 
-  // const  data = await fetchAllProjects() as any; // Fix this
-  // const projectsToDisplay = data?.projectSearch?.edges || [];
+  const  data = await fetchAllProjects() as any; // Fix this
+  const projectsToDisplay = data?.projectSearch?.edges || [];
 
   return (
     <section className="flexCenter flex-col max-w-10xl w-full mx-auto paddings">
@@ -32,11 +32,11 @@ export const ProfilePage = async({ user }: { user: UserProfile }) => {
       <section className="flexStart flex-col lg:mt-28 mt-16 w-full">
         <p className="w-full text-left text-lg font-semibold">Recent Work</p>
 
-        {/* <div className="profile_projects">
+        <div className="profile_projects">
           {projectsToDisplay.map(({ node }: { node: ProjectInterface }) => (
             <ProjectCard key={`${node?.id}`} id={node?.id} image={node?.image} title={node?.title} name={user.name} avatarUrl={user.avatarUrl} userId={user.id} />
           ))}
-        </div> */}
+        </div>
       </section>
     </section>
   );

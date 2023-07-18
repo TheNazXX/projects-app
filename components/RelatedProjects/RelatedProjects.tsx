@@ -9,8 +9,8 @@ import './RelatedProjects.css';
 export const RelatedProjects = async ({ userId }: RelatedProjectsProps) => {
   const result = (await getUserProjects(userId)) as { user?: UserProfile };
 
-  // const  data = await fetchAllProjects() as any // Fix this;
-  // const projectsToDisplay = data?.projectSearch?.edges || [];
+  const  data = await fetchAllProjects() as any // Fix this;
+  const projectsToDisplay = data?.projectSearch?.edges || [];
 
 
   return (
@@ -22,7 +22,7 @@ export const RelatedProjects = async ({ userId }: RelatedProjectsProps) => {
         </Link>
       </div>
 
-      {/* <div className="related_projects-grid">
+      <div className="related_projects-grid">
         {projectsToDisplay?.map(({ node }: { node: ProjectInterface }) => (
           <div className="flexCenter related_project-card drop-shadow-card">
             <Link href={`/project/${node?.id}`} className="flexCenter group relative w-full h-full">
@@ -34,7 +34,7 @@ export const RelatedProjects = async ({ userId }: RelatedProjectsProps) => {
             </Link>
           </div>
         ))}
-      </div> */}
+      </div>
     </section>
   );
 };
